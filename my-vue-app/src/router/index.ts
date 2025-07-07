@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import First from "@/views/First.vue";
+import Main from "@/views/Main.vue";
+import mainHome from "@/views/mainHome.vue";
+import mainDiary from "@/views/mainDiary.vue";
 
 
 const router = createRouter({
@@ -9,6 +12,22 @@ const router = createRouter({
             path: '/',
             name: 'first',
             component: First
+        },{
+            path:'/main',
+            name: 'main',
+            component: Main,
+            children: [
+                {
+                    path: 'home',
+                    name: 'TopWrapper-home',
+                    component: mainHome,
+                },
+                {
+                    path: 'diary',
+                    name: 'TopWrapper-diary',
+                    component: mainDiary,
+                }
+            ]
         }
     ]
 
@@ -22,7 +41,7 @@ const router = createRouter({
 //         next('/login')
 //         toast.error('用户未登录')
 //     } else if (to.path === '/login' && userStore.token) {
-//         next('/main/chat')
+//         next('/TopWrapper/chat')
 //     } else {
 //         next()
 //     }
